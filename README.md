@@ -19,55 +19,55 @@
 ```mermaid
 erDiagram
     USERS {
-        bigint id PK
-        varchar name
-        varchar email UNIQUE
-        enum role
-        timestamp created_at
+        int id
+        string name
+        string email
+        string role
+        datetime created_at
     }
 
     PROPERTIES {
-        bigint id PK
-        bigint host_id FK
-        varchar title
-        varchar city
+        int id
+        int host_id
+        string title
+        string city
         decimal price
         int bedrooms
         json details
-        timestamp created_at
+        datetime created_at
     }
 
     BOOKINGS {
-        bigint id PK
-        bigint property_id FK
-        bigint guest_id FK
-        enum status
+        int id
+        int property_id
+        int guest_id
+        string status
         date start_date
         date end_date
-        timestamp created_at
+        datetime created_at
     }
 
     PAYMENTS {
-        bigint id PK
-        bigint booking_id FK
+        int id
+        int booking_id
         decimal amount
-        timestamp paid_at
+        datetime paid_at
     }
 
     REVIEWS {
-        bigint id PK
-        bigint booking_id FK
+        int id
+        int booking_id
         int rating
-        text comment
-        timestamp created_at
+        string comment
+        datetime created_at
     }
 
     BOOKING_HISTORY {
-        bigint id PK
-        bigint booking_id FK
-        enum old_status
-        enum new_status
-        timestamp changed_at
+        int id
+        int booking_id
+        string old_status
+        string new_status
+        datetime changed_at
     }
 
     USERS ||--o{ PROPERTIES : "hosts"
